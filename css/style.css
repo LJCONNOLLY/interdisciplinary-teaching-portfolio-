@@ -1,8 +1,13 @@
 /* ==========================================================================
    Teaching Portfolio — herbarium sheet
    Watercolor specimen + printed field label. Palette sampled from
-   assets/img/canopy.png. Monochrome on purpose — value does the work hue
-   usually does.
+   assets/img/canopy.png, plus a terracotta accent reserved for interactive
+   states (current page, hover, link underlines) — never for body text or
+   the base palette.
+   All type sizes are in rem against the html root, so the on-page text-size
+   control (js/text-size.js) can scale the whole document by changing the
+   root font-size alone. Nothing on the page is smaller than 1.35rem
+   (21.6px at the default 16px root), which clears 16pt (21.3px).
    ========================================================================== */
 
 :root {
@@ -14,13 +19,16 @@
   --haze:   #A1AF91;
   --mist:   #D9DED6;
   --paper:  #F4F3EA;
+  --terracotta: #9C4E2D; /* accent only: current/hover states, never body text */
 
   --font-display: 'Archivo Expanded', 'Arial Narrow', sans-serif;
   --font-body: 'Literata', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
   --measure: 68ch;
-  --vine-gutter: 150px;
+  --vine-width: clamp(140px, 16vw, 252px);
+  --vine-gutter: 190px;
+  --min-text: 1.4rem; /* floor for every non-heading element on the page */
 }
 
 /* ---- reset -------------------------------------------------------------- */
@@ -46,7 +54,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 19px;
+  font-size: var(--min-text);
   line-height: 1.65;
 }
 
@@ -69,10 +77,12 @@ hr.hairline {
 .philosophy-subnav,
 .course-name,
 .pdf-link,
+.text-size-control,
+.link-list,
 .site-footer .mono {
   font-family: var(--font-mono);
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -94,8 +104,9 @@ hr.hairline {
   color: var(--ink);
   padding: 0.75em 1.25em;
   font-family: var(--font-mono);
+  font-size: var(--min-text);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   z-index: 1000;
   border: 2px solid var(--ink);
 }
@@ -109,22 +120,23 @@ hr.hairline {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
 }
 
 /* ---- trailing vine ---------------------------------------------------------- */
+/* Capped at its native cutout resolution (252px) so it is never upscaled —
+   crisper, at the cost of not spanning as wide on very large screens. */
 
 .trailing-vine {
   position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
-  width: auto;
-  max-width: 12vw;
+  width: var(--vine-width);
   object-fit: cover;
   object-position: right center;
-  opacity: 0.7;
+  opacity: 0.75;
   pointer-events: none;
   z-index: 1;
 }
@@ -151,42 +163,82 @@ button:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 1.5rem;
+  gap: 1rem 1.75rem;
   background: var(--paper);
   border-bottom: 1px solid var(--sage);
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .site-nav__brand {
-  font-size: 0.9rem;
+  font-size: var(--min-text);
   color: var(--ink);
   text-decoration: none;
+}
+
+.site-nav__brand:hover {
+  color: var(--terracotta);
 }
 
 .site-nav__links {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 0.6rem 1.75rem;
   margin: 0;
   padding: 0;
-  font-size: 0.75rem;
+  font-size: var(--min-text);
 }
 
 .site-nav__links a {
   text-decoration: none;
   color: var(--frond);
   padding-bottom: 0.2rem;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
 }
 
 .site-nav__links a:hover {
-  color: var(--ink);
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
 }
 
-.site-nav__links a.is-active {
+.site-nav__links a[aria-current="page"] {
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
+}
+
+/* ---- text size control ------------------------------------------------------- */
+
+.text-size-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--min-text);
+}
+
+.text-size-control .text-size-label {
+  font-size: 1.35rem;
+  color: var(--frond);
+  margin-right: 0.25rem;
+}
+
+.text-size-control button {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  background: var(--paper);
   color: var(--ink);
-  border-bottom-color: var(--ink);
+  border: 2px solid var(--sage);
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+.text-size-control button:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
 }
 
 /* ---- masthead --------------------------------------------------------------- */
@@ -197,7 +249,9 @@ button:focus-visible {
 
 .header-plate {
   width: 100%;
+  max-width: 1312px;
   height: auto;
+  margin: 0 auto;
 }
 
 .opening-block {
@@ -213,20 +267,67 @@ button:focus-visible {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.05;
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0 0 0.75rem;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  margin: 0 0 0.5rem;
   color: var(--ink);
+  border-bottom: 4px solid var(--terracotta);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 .opening-block .tagline {
-  font-size: 1.1rem;
+  font-size: 1.55rem;
   color: var(--forest);
-  margin: 0 0 0.75rem;
+  margin: 1.25rem 0 0.75rem;
 }
 
 .opening-block .contents-line {
   color: var(--frond);
   margin: 0;
+}
+
+/* home page: link list to the other pages */
+
+.link-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+
+.link-list li {
+  border-bottom: 1px solid var(--sage);
+}
+
+.link-list li:last-child {
+  border-bottom: none;
+}
+
+.link-list a {
+  display: block;
+  padding: 1.1rem 0;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: var(--min-text);
+}
+
+.link-list a:hover .link-name {
+  color: var(--terracotta);
+}
+
+.link-list .link-name {
+  display: block;
+}
+
+.link-list .link-desc {
+  display: block;
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  font-size: 1.35rem;
+  color: var(--forest);
+  margin-top: 0.35rem;
 }
 
 /* ---- section dividers -------------------------------------------------------- */
@@ -239,7 +340,7 @@ button:focus-visible {
 }
 
 .divider img {
-  height: 40px;
+  height: 48px;
   width: auto;
 }
 
@@ -251,7 +352,7 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.1;
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
   color: var(--ink);
   margin: 0 0 1rem;
 }
@@ -262,7 +363,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.15;
-  font-size: 1.15rem;
+  font-size: 1.75rem;
   color: var(--forest);
   margin: 2rem 0 0.75rem;
 }
@@ -293,14 +394,14 @@ h3 {
 .meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 2rem;
-  font-size: 0.7rem;
+  gap: 0.6rem 2rem;
+  font-size: 1.35rem;
   margin: 0;
   flex: 1 1 auto;
 }
 
 .pdf-link {
-  font-size: 0.7rem;
+  font-size: 1.35rem;
   text-decoration: none;
   color: var(--forest);
   border-bottom: 1px solid var(--sage);
@@ -308,8 +409,8 @@ h3 {
 }
 
 .pdf-link:hover {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
 }
 
 .specimen-card .hairline {
@@ -324,14 +425,14 @@ h3 {
 
 .specimen-body--philosophy {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 2.5rem;
   align-items: start;
 }
 
 .philosophy-subnav {
   position: sticky;
-  top: 4.5rem;
+  top: 5.5rem;
 }
 
 .philosophy-subnav ul {
@@ -340,22 +441,22 @@ h3 {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 .philosophy-subnav a {
-  font-size: 0.68rem;
+  font-size: 1.35rem;
   text-decoration: none;
   color: var(--frond);
   display: inline-block;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   padding-bottom: 0.15rem;
 }
 
 .philosophy-subnav a:hover,
 .philosophy-subnav a.is-active {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
 }
 
 .philosophy-text {
@@ -379,7 +480,7 @@ h3 {
 
 .specimen-field {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 1rem 2.5rem;
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--sage);
@@ -390,7 +491,7 @@ h3 {
 }
 
 .field-label {
-  font-size: 0.72rem;
+  font-size: 1.35rem;
   color: var(--frond);
   padding-top: 0.2rem;
 }
@@ -399,16 +500,16 @@ h3 {
   background-image: repeating-linear-gradient(
     to bottom,
     transparent,
-    transparent 27px,
-    var(--haze) 27px,
-    var(--haze) 28px
+    transparent 31px,
+    var(--haze) 31px,
+    var(--haze) 32px
   );
 }
 
-.field-empty--sm { height: 28px; }
-.field-empty--md { height: 84px; }
-.field-empty--lg { height: 140px; }
-.field-empty--xl { height: 224px; }
+.field-empty--sm { height: 32px; }
+.field-empty--md { height: 96px; }
+.field-empty--lg { height: 160px; }
+.field-empty--xl { height: 256px; }
 
 /* ---- courses list ----------------------------------------------------------- */
 
@@ -426,11 +527,11 @@ h3 {
 }
 
 .courses-list li {
-  padding: 1rem 0;
+  padding: 1.1rem 0;
   border-bottom: 1px solid var(--sage);
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .courses-list li:last-child {
@@ -438,18 +539,18 @@ h3 {
 }
 
 .course-name {
-  font-size: 0.75rem;
+  font-size: 1.35rem;
   color: var(--ink);
 }
 
 .course-name em {
   font-style: normal;
-  color: var(--frond);
+  color: var(--terracotta);
 }
 
 .course-desc {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--min-text);
   color: var(--forest);
 }
 
@@ -461,11 +562,11 @@ h3 {
   padding: 2.5rem 1.5rem 3rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .site-footer .mono {
-  font-size: 0.75rem;
+  font-size: 1.35rem;
   margin: 0;
 }
 
@@ -475,14 +576,13 @@ h3 {
 }
 
 .site-footer a:hover {
-  border-bottom-color: var(--ink);
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
 }
 
 /* ---- responsive: collapse two-column artifact layout ------------------------- */
 
 @media (max-width: 700px) {
-  body { font-size: 17px; }
-
   .specimen-body--philosophy,
   .specimen-field {
     grid-template-columns: 1fr;
@@ -496,7 +596,7 @@ h3 {
   .philosophy-subnav ul {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
+    gap: 0.5rem 1.5rem;
   }
 
   .specimen-header {
@@ -505,6 +605,10 @@ h3 {
 
   .field-label {
     padding-top: 0;
+  }
+
+  .text-size-control .text-size-label {
+    display: none;
   }
 }
 

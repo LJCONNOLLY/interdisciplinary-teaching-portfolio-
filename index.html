@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<script src="js/text-size.js"></script>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -22,17 +23,22 @@
 </picture>
 
 <nav class="site-nav" aria-label="Primary">
-  <a class="site-nav__brand" href="#top">LJ Connolly</a>
+  <a class="site-nav__brand" href="index.html" aria-current="page">LJ Connolly</a>
   <ul class="site-nav__links">
-    <li><a href="#philosophy">Teaching Philosophy</a></li>
-    <li><a href="#syllabus">Sample Syllabus</a></li>
-    <li><a href="#assignment">Signature Assignment</a></li>
-    <li><a href="#courses">Courses</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="philosophy.html">Teaching Philosophy</a></li>
+    <li><a href="syllabus.html">Sample Syllabus</a></li>
+    <li><a href="assignment.html">Signature Assignment</a></li>
+    <li><a href="courses.html">Courses</a></li>
   </ul>
+  <div class="text-size-control" role="group" aria-label="Adjust text size">
+    <span class="text-size-label">Text Size</span>
+    <button type="button" id="text-size-dec" aria-label="Decrease text size">A&minus;</button>
+    <button type="button" id="text-size-reset" aria-label="Reset text size">Reset</button>
+    <button type="button" id="text-size-inc" aria-label="Increase text size">A+</button>
+  </div>
 </nav>
 
-<header class="masthead" id="top">
+<header class="masthead">
   <picture>
     <source type="image/webp" media="(max-width: 700px)" srcset="assets/img/header-plate-mobile.webp">
     <source media="(max-width: 700px)" srcset="assets/img/header-plate-mobile.png">
@@ -53,222 +59,42 @@
 </picture>
 
 <main id="main">
-
-  <!-- ============================================================ -->
-  <!-- TEACHING PHILOSOPHY — full statement, verbatim from the docx -->
-  <!-- ============================================================ -->
-  <section id="philosophy" class="specimen-card specimen-card--philosophy">
-    <div class="specimen-header">
-      <h2>Teaching Philosophy</h2>
-      <p class="meta-row">
-        <span class="meta-item"><span class="meta-label">Fields</span> <span class="meta-value">English · Women's &amp; Gender Studies · Communication &amp; Media · Technical &amp; Professional Writing</span></span>
-        <span class="meta-item"><span class="meta-label">Level</span> <span class="meta-value">Undergraduate through Graduate</span></span>
-        <span class="meta-item"><span class="meta-label">Status</span> <span class="meta-value">Current</span></span>
-      </p>
-      <a class="pdf-link" href="assets/teaching-statement.pdf">Download as PDF</a>
-    </div>
-    <hr class="hairline">
-    <div class="specimen-body specimen-body--philosophy">
-      <nav class="philosophy-subnav" aria-label="Teaching philosophy sections">
-        <ul>
-          <li><a href="#interdisciplinary-knowledge">Interdisciplinary Knowledge</a></li>
-          <li><a href="#situated-knowledge">Situated Knowledge</a></li>
-          <li><a href="#failure">Failure</a></li>
-          <li><a href="#integrative-application">Integrative Application</a></li>
-          <li><a href="#critical-ai-literacy">Critical AI Literacy</a></li>
-          <li><a href="#towards-future-courses">Towards Future Courses</a></li>
-        </ul>
-      </nav>
-      <div class="philosophy-text">
-        <p>Some of the most consequential documents a person meets are the ones that look least like arguments: the style guide, the accessibility standard, the readability score, the health statistic that counts some bodies and not others, and the generative model that proposes a sentence before the writer has decided on one. What these documents exclude is usually a condition of their working rather than a flaw in it, which is how a system can run exactly as designed and still leave people harmed. A student who can describe such a system without locating the decision inside it is writing within an argument someone else finished making years ago. My teaching is an attempt to get students to that decision, to test it, and to build something that answers it.</p>
-
-        <h3 id="interdisciplinary-knowledge">Interdisciplinary Knowledge</h3>
-        <p>A student can learn about theoretical ideas from a text in a women's studies seminar and then fail to recognize the same idea happening in a workplace documentation manual, which is the argument for teaching it in more than one place. The infrastructure that determines which bodies a public health dataset can represent also determines which readers a corporate style guide will admit and which sentence a model offers a first-year writer at two in the morning. I teach across women's and gender studies, communication and media, technical and professional writing, and composition because the object of study does not respect the boundary between them. I ask students to remake finished work in a form their own department does not require. A poet who has to decide what a reader does at the end of a line, rather than what the line does, is working under a constraint their prior training as a poet never asked of them, and that unfamiliarity is where I have seen students do their most creative and inventive work.</p>
-
-        <h3 id="situated-knowledge">Situated Knowledge</h3>
-        <p>By the time a student reaches my classroom, most of them have been the applicant for a form with no line for their situation, or the reader a document assumed would not be there, or the writer whose sentences a style guide treated as errors. What they usually lack is not the experience but a frame that lets it count as evidence rather than as something that just happened to them, and building that frame is most of the first month. So I design assignments that ask students to supply the object of study themselves. They choose the platform they audit, work from documents they have actually had to get through, and put the semester's readings up against conditions they know firsthand. A student who has been refused by a system asks harder questions about it than a student meeting it as an example, which is the whole reason to let them choose. A student can tell you exactly what a form decided about them and still have no idea how the form was built, and that gap is where I want to meet them.</p>
-
-        <h3 id="failure">Failure</h3>
-        <p>I believe that where students run into problems is where the learning actually happens. I use distant reading, which finds patterns by counting and comparing across a large body of text, and counter-mapping, which reads a landscape for what it has declined to commemorate, and in both cases the useful part is the limit of the system: what a corpus will not yield to close reading alone. I ask beginning creative writers to rebuild a finished personal essay as a branching narrative in Twine, a free browser-based tool that requires no programming background, so that the sequence they had treated as the natural shape of a life becomes one arrangement among several they now have to choose between on purpose. Students learn a medium by running into its edges, which teaches them faster and more durably than my telling them where the edges are. What they leave with is a system they struggled with and learned from the inside.</p>
-
-        <h3 id="integrative-application">Integrative Application</h3>
-        <p>The purpose of integrative application in my courses is to put students in the position of having to act on their own analysis. Sasha Costanza-Chock's case against critique that never becomes intervention convinced me that the essay alone would train students to be articulate about systems no one would ever ask them to change. I had built the final project for Technofeminisms in Practice, a graduate seminar I developed, as a critical essay, and then spent a semester letting the reading talk me out of it. The final now runs on two tracks. Track A is a critical platform audit. Track B asks students to build a working prototype of a feminist alternative, with Callisto's redesign of its survivor-reporting intake, where pronoun selectors gave way to open text fields, as the model of what one structural decision does to who is able to use a form. I built two prototypes myself before assigning it, partly to make sure I was asking my students for something I had actually done. This is also where digital humanities training pays off in courses already on the books: professional writing students who can construct the document instead of just describing it, literature students who can see a pattern across two hundred texts, and composition students for whom structure stops being advice and becomes a choice with consequences.</p>
-
-        <h3 id="critical-ai-literacy">Critical AI Literacy</h3>
-        <p>A generative AI model hands a student sentences shaped by decisions other people made long before the student began writing, which is the problem the whole semester has been examining, appearing this time in the student's own draft. These systems are therefore an object of study in my courses and a tool students get their hands on. In my graduate seminar Technofeminisms in Practice, critical AI literacy is a graded criterion worth twenty percent, and the accounting takes the form of narrative reflection rather than prompt logs: what the student asked of the system, what worked, what failed, what the failure exposed about an assumption built into the model, and whether any of it moved their position on the critiques we had spent the term assembling. They leave with a position on these tools they can defend for themselves.</p>
-
-        <h3 id="towards-future-courses">Towards Future Courses</h3>
-        <p>I am prepared to teach technical and professional writing, media writing, rhetoric and technology, business and workplace communication, first-year and advanced composition, introduction to women's, gender, and sexuality studies, and digital rhetoric. Where a department sees a gap, I am glad to build. I have developed an undergraduate course on data, documents, and identity that treats forms, records, and classification systems as writing worth studying, and a course in interactive and branching narrative that requires no programming background and no software budget, which makes it teachable in any department.</p>
-      </div>
-    </div>
-  </section>
-
-  <picture class="divider">
-    <source type="image/webp" srcset="assets/img/divider-palmetto.webp">
-    <img src="assets/img/divider-palmetto.png" alt="" aria-hidden="true">
-  </picture>
-
-  <!-- ============================================================ -->
-  <!-- SAMPLE SYLLABUS — PLACEHOLDER. Paste real syllabus content    -->
-  <!-- into the .field-empty blocks below. Do not touch layout.      -->
-  <!-- ============================================================ -->
-  <section id="syllabus" class="specimen-card specimen-card--placeholder">
-    <div class="specimen-header">
-      <h2>Sample Syllabus</h2>
-      <p class="meta-row">
-        <span class="meta-item"><span class="meta-label">Fields</span> <span class="meta-value">Not yet determined</span></span>
-        <span class="meta-item"><span class="meta-label">Level</span> <span class="meta-value">Not yet determined</span></span>
-        <span class="meta-item"><span class="meta-label">Status</span> <span class="meta-value">Not yet written</span></span>
-      </p>
-    </div>
-    <hr class="hairline">
-    <div class="specimen-body">
-      <!-- BEGIN PLACEHOLDER: SYLLABUS — paste real content into each .field-empty below -->
-      <div class="specimen-field">
-        <div class="field-label">Course Title &amp; Number</div>
-        <div class="field-empty field-empty--sm" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Catalog Description</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Course Description</div>
-        <div class="field-empty field-empty--lg" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Learning Outcomes</div>
-        <div class="field-empty field-empty--lg" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Required Texts</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Assessment Breakdown</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Weekly Schedule</div>
-        <div class="field-empty field-empty--xl" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Policies</div>
-        <div class="field-empty field-empty--lg" aria-hidden="true"></div>
-      </div>
-      <!-- END PLACEHOLDER: SYLLABUS -->
-    </div>
-  </section>
-
-  <picture class="divider">
-    <source type="image/webp" srcset="assets/img/divider-monstera.webp">
-    <img src="assets/img/divider-monstera.png" alt="" aria-hidden="true">
-  </picture>
-
-  <!-- ============================================================ -->
-  <!-- SIGNATURE ASSIGNMENT — PLACEHOLDER. Paste real assignment     -->
-  <!-- content into the .field-empty blocks below. Do not touch      -->
-  <!-- layout.                                                        -->
-  <!-- ============================================================ -->
-  <section id="assignment" class="specimen-card specimen-card--placeholder">
-    <div class="specimen-header">
-      <h2>Signature Assignment</h2>
-      <p class="meta-row">
-        <span class="meta-item"><span class="meta-label">Fields</span> <span class="meta-value">Not yet determined</span></span>
-        <span class="meta-item"><span class="meta-label">Level</span> <span class="meta-value">Not yet determined</span></span>
-        <span class="meta-item"><span class="meta-label">Status</span> <span class="meta-value">Not yet written</span></span>
-      </p>
-    </div>
-    <hr class="hairline">
-    <div class="specimen-body">
-      <!-- BEGIN PLACEHOLDER: SIGNATURE ASSIGNMENT — paste real content into each .field-empty below -->
-      <div class="specimen-field">
-        <div class="field-label">Prompt</div>
-        <div class="field-empty field-empty--lg" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Outcomes It Maps To</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Sequence &amp; Scaffolding</div>
-        <div class="field-empty field-empty--lg" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Rubric</div>
-        <div class="field-empty field-empty--xl" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Sample Artifact</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <div class="specimen-field">
-        <div class="field-label">Student Reflection</div>
-        <div class="field-empty field-empty--md" aria-hidden="true"></div>
-      </div>
-      <!-- END PLACEHOLDER: SIGNATURE ASSIGNMENT -->
-    </div>
-  </section>
-
-  <picture class="divider">
-    <source type="image/webp" srcset="assets/img/divider-fern.webp">
-    <img src="assets/img/divider-fern.png" alt="" aria-hidden="true">
-  </picture>
-
-  <!-- ============================================================ -->
-  <!-- COURSES PREPARED TO TEACH — drawn from the teaching          -->
-  <!-- statement's own "Towards Future Courses" paragraph.           -->
-  <!-- ============================================================ -->
-  <section id="courses" class="courses-section">
-    <h2>Courses I'm Prepared to Teach</h2>
-    <ul class="courses-list">
+  <div class="courses-section">
+    <ul class="link-list">
       <li>
-        <span class="course-name">Technical &amp; Professional Writing</span>
-        <span class="course-desc">Writing and design for workplace, scientific, and public-facing documents.</span>
+        <a href="philosophy.html">
+          <span class="link-name">Teaching Philosophy</span>
+          <span class="link-desc">The full statement — how interdisciplinary and situated knowledge, failure, and critical AI literacy shape my classroom.</span>
+        </a>
       </li>
       <li>
-        <span class="course-name">Media Writing</span>
-        <span class="course-desc">Writing for and about contemporary media platforms and forms.</span>
+        <a href="syllabus.html">
+          <span class="link-name">Sample Syllabus</span>
+          <span class="link-desc">A record of the fields a syllabus needs, filled in as courses take shape.</span>
+        </a>
       </li>
       <li>
-        <span class="course-name">Rhetoric and Technology</span>
-        <span class="course-desc">How technical systems make persuasive and structural arguments.</span>
+        <a href="assignment.html">
+          <span class="link-name">Signature Assignment</span>
+          <span class="link-desc">Prompt, outcomes, rubric, and student work — filled in as it exists.</span>
+        </a>
       </li>
       <li>
-        <span class="course-name">Business &amp; Workplace Communication</span>
-        <span class="course-desc">Writing and communication practices for organizational contexts.</span>
-      </li>
-      <li>
-        <span class="course-name">First-Year &amp; Advanced Composition</span>
-        <span class="course-desc">Composition instruction across the introductory-to-advanced sequence.</span>
-      </li>
-      <li>
-        <span class="course-name">Introduction to Women's, Gender, and Sexuality Studies</span>
-        <span class="course-desc">Foundational WGSS coursework at the undergraduate level.</span>
-      </li>
-      <li>
-        <span class="course-name">Digital Rhetoric</span>
-        <span class="course-desc">Rhetorical analysis and production across digital platforms and interfaces.</span>
-      </li>
-      <li>
-        <span class="course-name">Data, Documents, and Identity <em>(developed)</em></span>
-        <span class="course-desc">An undergraduate course treating forms, records, and classification systems as writing worth studying.</span>
-      </li>
-      <li>
-        <span class="course-name">Interactive &amp; Branching Narrative <em>(developed)</em></span>
-        <span class="course-desc">Requires no programming background and no software budget, so it's teachable in any department.</span>
+        <a href="courses.html">
+          <span class="link-name">Courses I'm Prepared to Teach</span>
+          <span class="link-desc">The fields and courses I can bring to a department, developed and otherwise.</span>
+        </a>
       </li>
     </ul>
-  </section>
-
-  <picture class="divider">
-    <source type="image/webp" srcset="assets/img/divider-palmetto.webp">
-    <img src="assets/img/divider-palmetto.png" alt="" aria-hidden="true">
-  </picture>
-
+  </div>
 </main>
 
-<footer id="contact" class="site-footer">
+<picture class="divider">
+  <source type="image/webp" srcset="assets/img/divider-palmetto.webp">
+  <img src="assets/img/divider-palmetto.png" alt="" aria-hidden="true">
+</picture>
+
+<footer class="site-footer">
   <p class="mono"><span class="meta-label">Email</span> <a href="mailto:ljconnolly@ucf.edu">ljconnolly@ucf.edu</a></p>
   <p class="mono"><span class="meta-label">CV</span> <a href="assets/cv.pdf">Curriculum Vitae (PDF)</a></p>
 </footer>
