@@ -22,6 +22,7 @@
   --font-display: 'Archivo Expanded', 'Arial Narrow', sans-serif;
   --font-body: 'Literata', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-script: 'Sacramento', cursive; /* home page name only */
 
   --measure: 68ch;
   --vine-width: clamp(140px, 16vw, 252px);
@@ -232,12 +233,10 @@ button:focus-visible {
 }
 
 .opening-block h1 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.05;
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-family: var(--font-script);
+  font-weight: 400;
+  line-height: 1;
+  font-size: clamp(4.8rem, 15vw, 7.2rem);
   margin: 0 0 0.5rem;
   color: var(--ink);
   border-bottom: 4px solid var(--terracotta);
