@@ -11,31 +11,20 @@ if that shared chrome changes):
 
 - `index.html` — home: header plate, name/tagline, links to the other four pages
 - `philosophy.html` — full teaching statement, with its own in-page sub-nav
-- `syllabus.html` — sample syllabus placeholder
-- `assignment.html` — signature assignment placeholder
+- `syllabus.html` — links out to the real, separately-published syllabus (Technofeminisms in Practice)
+- `assignment.html` — the real signature assignment (Technofeminisms in Practice final project), in full
 - `courses.html` — courses prepared to teach
 
-## Filling in the placeholders
+## Placeholders
 
-`syllabus.html` and `assignment.html` are intentionally empty records — real
-field labels with blank ruled areas, not invented content. Each is wrapped in
-an HTML comment block:
-
-```html
-<!-- BEGIN PLACEHOLDER: SYLLABUS — paste real content into each .field-empty below -->
-...
-<!-- END PLACEHOLDER: SYLLABUS -->
-```
-
-To fill one in: replace the empty `<div class="field-empty ...">` with your
-real content (text, lists, whatever fits), and remove the `field-empty` class
-and `aria-hidden="true"` attribute since the div will no longer be a blank
-ruled area. Update that card's metadata row (`FIELDS` / `LEVEL` / `STATUS`)
-to reflect the real course once it exists — `STATUS` in particular should
-move off `Not yet written`.
-
-`assignment.html` is still an empty record. `syllabus.html` now links out to
-the real, separately-published syllabus instead.
+Neither `syllabus.html` nor `assignment.html` is a placeholder anymore —
+both link to or contain LJ's real content. If a future artifact needs the
+empty-record placeholder treatment again, the pattern that was here is:
+each field is a `.specimen-field` with a `.field-label` and either real
+content or a blank `.field-empty field-empty--{sm,md,lg,xl}` div
+(`aria-hidden="true"`), with the card's `STATUS` meta value reading
+`Not yet written` until it's filled in. Wrap the block in
+`<!-- BEGIN/END PLACEHOLDER: ... -->` comments so it's easy to find later.
 
 `assets/teaching-statement.pdf` and `assets/cv.pdf` are generated from the
 source docx files at the repo root (`Teaching Statement.docx`,

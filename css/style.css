@@ -518,6 +518,16 @@ h3 {
   color: var(--terracotta);
 }
 
+.specimen-body .course-name a {
+  text-decoration: none;
+  border-bottom: 2px solid var(--sage);
+}
+
+.specimen-body .course-name a:hover {
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
+}
+
 .course-desc {
   font-family: var(--font-body);
   font-size: var(--min-text);
