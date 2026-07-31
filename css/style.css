@@ -1,0 +1,524 @@
+/* ==========================================================================
+   Teaching Portfolio — herbarium sheet
+   Watercolor specimen + printed field label. Palette sampled from
+   assets/img/canopy.png. Monochrome on purpose — value does the work hue
+   usually does.
+   ========================================================================== */
+
+:root {
+  --ink:    #152413;
+  --forest: #30422D;
+  --frond:  #4A5D44;
+  --leaf:   #65785A;
+  --sage:   #809272;
+  --haze:   #A1AF91;
+  --mist:   #D9DED6;
+  --paper:  #F4F3EA;
+
+  --font-display: 'Archivo Expanded', 'Arial Narrow', sans-serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --measure: 68ch;
+  --vine-gutter: 150px;
+}
+
+/* ---- reset -------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+hr.hairline {
+  border: none;
+  border-top: 1px solid var(--sage);
+  margin: 0;
+}
+
+/* ---- utility / mono voice ------------------------------------------------ */
+
+.mono,
+.meta-row,
+.field-label,
+.site-nav,
+.philosophy-subnav,
+.course-name,
+.pdf-link,
+.site-footer .mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meta-label {
+  color: var(--frond);
+}
+
+.meta-value {
+  color: var(--ink);
+}
+
+/* ---- skip link ------------------------------------------------------------ */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.75em 1.25em;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  z-index: 1000;
+  border: 2px solid var(--ink);
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ---- focus states ---------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---- trailing vine ---------------------------------------------------------- */
+
+.trailing-vine {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: auto;
+  max-width: 12vw;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1099px) {
+  .trailing-vine {
+    display: none;
+  }
+}
+
+@media (min-width: 1100px) {
+  body {
+    padding-right: var(--vine-gutter);
+  }
+}
+
+/* ---- persistent top nav ------------------------------------------------------ */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--sage);
+  padding: 0.9rem 1.5rem;
+}
+
+.site-nav__brand {
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav__links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+}
+
+.site-nav__links a {
+  text-decoration: none;
+  color: var(--frond);
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav__links a:hover {
+  color: var(--ink);
+}
+
+.site-nav__links a.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* ---- masthead --------------------------------------------------------------- */
+
+.masthead {
+  position: relative;
+}
+
+.header-plate {
+  width: 100%;
+  height: auto;
+}
+
+.opening-block {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1rem;
+  text-align: left;
+}
+
+.opening-block h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+}
+
+.opening-block .tagline {
+  font-size: 1.1rem;
+  color: var(--forest);
+  margin: 0 0 0.75rem;
+}
+
+.opening-block .contents-line {
+  color: var(--frond);
+  margin: 0;
+}
+
+/* ---- section dividers -------------------------------------------------------- */
+
+.divider {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.divider img {
+  height: 40px;
+  width: auto;
+}
+
+/* ---- section heading (display face, h2+) -------------------------------------- */
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  font-size: 1.15rem;
+  color: var(--forest);
+  margin: 2rem 0 0.75rem;
+}
+
+/* ---- specimen card (philosophy / syllabus / assignment) ------------------------ */
+
+.specimen-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.specimen-header {
+  background: var(--mist);
+  padding: 1.75rem 1.75rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.specimen-header h2 {
+  margin: 0;
+  width: 100%;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  font-size: 0.7rem;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.pdf-link {
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: var(--forest);
+  border-bottom: 1px solid var(--sage);
+  white-space: nowrap;
+}
+
+.pdf-link:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.specimen-card .hairline {
+  border-top-color: var(--sage);
+}
+
+.specimen-body {
+  padding: 2rem 0 3rem;
+}
+
+/* philosophy: sticky nav label column + prose column */
+
+.specimen-body--philosophy {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.philosophy-subnav {
+  position: sticky;
+  top: 4.5rem;
+}
+
+.philosophy-subnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.philosophy-subnav a {
+  font-size: 0.68rem;
+  text-decoration: none;
+  color: var(--frond);
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 0.15rem;
+}
+
+.philosophy-subnav a:hover,
+.philosophy-subnav a.is-active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.philosophy-text {
+  max-width: var(--measure);
+}
+
+.philosophy-text h3:first-child {
+  margin-top: 0;
+}
+
+.philosophy-text p {
+  margin: 0 0 1.25em;
+}
+
+/* placeholder cards: repeated label / empty-area field rows */
+
+.specimen-body--placeholder,
+.specimen-card--placeholder .specimen-body {
+  padding-top: 2rem;
+}
+
+.specimen-field {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem 2.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--sage);
+}
+
+.specimen-field:last-child {
+  border-bottom: none;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  color: var(--frond);
+  padding-top: 0.2rem;
+}
+
+.field-empty {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    var(--haze) 27px,
+    var(--haze) 28px
+  );
+}
+
+.field-empty--sm { height: 28px; }
+.field-empty--md { height: 84px; }
+.field-empty--lg { height: 140px; }
+.field-empty--xl { height: 224px; }
+
+/* ---- courses list ----------------------------------------------------------- */
+
+.courses-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.courses-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  max-width: var(--measure);
+}
+
+.courses-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--sage);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.courses-list li:last-child {
+  border-bottom: none;
+}
+
+.course-name {
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+
+.course-name em {
+  font-style: normal;
+  color: var(--frond);
+}
+
+.course-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--forest);
+}
+
+/* ---- footer ------------------------------------------------------------------ */
+
+.site-footer {
+  background: var(--mist);
+  margin-top: 1rem;
+  padding: 2.5rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.site-footer .mono {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.site-footer a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+}
+
+.site-footer a:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* ---- responsive: collapse two-column artifact layout ------------------------- */
+
+@media (max-width: 700px) {
+  body { font-size: 17px; }
+
+  .specimen-body--philosophy,
+  .specimen-field {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-subnav {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .philosophy-subnav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .specimen-header {
+    padding: 1.25rem;
+  }
+
+  .field-label {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .opening-block { padding: 2rem 1rem 1rem; }
+  .specimen-card, .courses-section { padding: 0 1rem; }
+  .site-nav { padding: 0.75rem 1rem; }
+}
+
+/* ---- reduced motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
