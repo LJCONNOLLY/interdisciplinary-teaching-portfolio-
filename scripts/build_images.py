@@ -210,6 +210,17 @@ def build_dividers():
         save_webp_png(out, name, quality=95, max_kb=60)
 
 
+def build_logo():
+    """Footer logo mark (assets/img/lj-logo-source.jpg, user-supplied, not
+    derived from canopy.png). Resized only -- kept as its own bordered card
+    rather than cut out, since it's a complete logo lockup, not a specimen."""
+    src = Image.open(f"{OUT}/lj-logo-source.jpg").convert("RGB")
+    target_w = 320
+    target_h = round(src.size[1] * target_w / src.size[0])
+    out = src.resize((target_w, target_h), Image.LANCZOS)
+    save_webp_png(out, "logo-footer", quality=90, max_kb=60)
+
+
 if __name__ == "__main__":
     print("Building header plate...")
     build_header()
@@ -217,4 +228,6 @@ if __name__ == "__main__":
     build_vine()
     print("Building section dividers...")
     build_dividers()
+    print("Building footer logo...")
+    build_logo()
     print("Done.")

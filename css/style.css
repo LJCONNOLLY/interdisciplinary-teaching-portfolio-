@@ -4,9 +4,7 @@
    assets/img/canopy.png, plus a terracotta accent reserved for interactive
    states (current page, hover, link underlines) — never for body text or
    the base palette.
-   All type sizes are in rem against the html root, so the on-page text-size
-   control (js/text-size.js) can scale the whole document by changing the
-   root font-size alone. Nothing on the page is smaller than 1.35rem
+   All type sizes are in rem. Nothing on the page is smaller than 1.35rem
    (21.6px at the default 16px root), which clears 16pt (21.3px).
    ========================================================================== */
 
@@ -77,7 +75,6 @@ hr.hairline {
 .philosophy-subnav,
 .course-name,
 .pdf-link,
-.text-size-control,
 .link-list,
 .site-footer .mono {
   font-family: var(--font-mono);
@@ -206,41 +203,6 @@ button:focus-visible {
   border-bottom-color: var(--terracotta);
 }
 
-/* ---- text size control ------------------------------------------------------- */
-
-.text-size-control {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--min-text);
-}
-
-.text-size-control .text-size-label {
-  font-size: 1.35rem;
-  color: var(--frond);
-  margin-right: 0.25rem;
-}
-
-.text-size-control button {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  font-size: 1.35rem;
-  background: var(--paper);
-  color: var(--ink);
-  border: 2px solid var(--sage);
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  padding: 0.4rem 0.6rem;
-  cursor: pointer;
-}
-
-.text-size-control button:hover {
-  border-color: var(--terracotta);
-  color: var(--terracotta);
-}
-
 /* ---- masthead --------------------------------------------------------------- */
 
 .masthead {
@@ -258,7 +220,15 @@ button:focus-visible {
   max-width: var(--measure);
   margin: 0 auto;
   padding: 2.5rem 1.5rem 1rem;
-  text-align: left;
+  text-align: center;
+}
+
+.opening-block--title {
+  padding-bottom: 0;
+}
+
+.opening-block--intro {
+  padding-top: 0.5rem;
 }
 
 .opening-block h1 {
@@ -548,6 +518,16 @@ h3 {
   color: var(--terracotta);
 }
 
+.specimen-body .course-name a {
+  text-decoration: none;
+  border-bottom: 2px solid var(--sage);
+}
+
+.specimen-body .course-name a:hover {
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
+}
+
 .course-desc {
   font-family: var(--font-body);
   font-size: var(--min-text);
@@ -560,6 +540,19 @@ h3 {
   background: var(--mist);
   margin-top: 1rem;
   padding: 2.5rem 1.5rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.site-footer__logo img {
+  width: 110px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.site-footer__contact {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -605,10 +598,6 @@ h3 {
 
   .field-label {
     padding-top: 0;
-  }
-
-  .text-size-control .text-size-label {
-    display: none;
   }
 }
 
