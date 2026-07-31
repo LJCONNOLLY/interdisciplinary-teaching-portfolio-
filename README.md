@@ -34,9 +34,13 @@ ruled area. Update that card's metadata row (`FIELDS` / `LEVEL` / `STATUS`)
 to reflect the real course once it exists — `STATUS` in particular should
 move off `Not yet written`.
 
-Two files are linked but not yet in the repo: `assets/teaching-statement.pdf`
-and `assets/cv.pdf`. Drop the real files in at those paths and the existing
-links will resolve.
+`assignment.html` is still an empty record. `syllabus.html` now links out to
+the real, separately-published syllabus instead.
+
+`assets/teaching-statement.pdf` and `assets/cv.pdf` are generated from the
+source docx files at the repo root (`Teaching Statement.docx`,
+`Connolly CV.docx`) by `scripts/build_pdfs.py` — see below. Edit those docx
+files and re-run the script rather than hand-editing the PDFs.
 
 ## Accessibility
 
@@ -60,3 +64,17 @@ python3 scripts/build_images.py
 
 This is a one-time development tool — the site itself has no build step and
 doesn't run this script.
+
+## Regenerating the PDFs
+
+`Teaching Statement.docx` and `Connolly CV.docx` at the repo root are the
+source documents for the two downloadable PDFs. `scripts/build_pdfs.py`
+reads their paragraph/bold structure directly (LibreOffice's headless
+conversion wasn't reliable enough to depend on) and renders a plain PDF
+styled with the site's own palette — not a pixel copy of the Word
+formatting, but the same real text. Re-run after editing either docx:
+
+```
+pip3 install reportlab
+python3 scripts/build_pdfs.py
+```
