@@ -147,13 +147,13 @@ def build_header():
     crop_h = round(w / 3)  # 437
     desktop = src.crop((0, 0, w, crop_h))
     desktop = apply_deckle_edges(desktop, band=30, jitter=9)
-    save_webp_png(desktop, "header-plate", quality=80, max_kb=250)
+    save_webp_png(desktop, "header-plate", quality=92, max_kb=250)
 
     # Mobile plate: taller aspect so foliage doesn't get squeezed to a sliver
     mobile_h = round(w / 2.2)
     mobile = src.crop((0, 0, w, mobile_h))
     mobile = apply_deckle_edges(mobile, band=30, jitter=9)
-    save_webp_png(mobile, "header-plate-mobile", quality=80, max_kb=250)
+    save_webp_png(mobile, "header-plate-mobile", quality=87, max_kb=250)
 
 
 def build_vine():

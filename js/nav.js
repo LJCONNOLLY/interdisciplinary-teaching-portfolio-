@@ -1,10 +1,13 @@
-// Scroll-spy: marks the nav link for the section currently in view with
-// an --ink rule. The only motion on the page besides native smooth scroll.
+// Scroll-spy for the teaching-philosophy page's in-page sub-nav: marks the
+// link for the section currently in view with a terracotta rule. Cross-page
+// nav uses a static aria-current="page" set in each file instead, since
+// scrolling across separate pages doesn't apply. A no-op on any page
+// without a .philosophy-subnav.
 (function () {
   var navLinks = Array.prototype.slice.call(
-    document.querySelectorAll('.site-nav__links a, .philosophy-subnav a')
+    document.querySelectorAll('.philosophy-subnav a')
   );
-  if (!navLinks.length) return;
+  if (!navLinks.length || !('IntersectionObserver' in window)) return;
 
   var linksById = {};
   navLinks.forEach(function (link) {
@@ -16,17 +19,16 @@
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
 
-  if (!targets.length || !('IntersectionObserver' in window)) return;
+  if (!targets.length) return;
 
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
-        var links = linksById[entry.target.id] || [];
-        links.forEach(function (link) {
-          if (entry.isIntersecting) {
-            navLinks.forEach(function (l) { l.classList.remove('is-active'); l.removeAttribute('aria-current'); });
-            links.forEach(function (l) { l.classList.add('is-active'); l.setAttribute('aria-current', 'true'); });
-          }
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (l) { l.classList.remove('is-active'); l.removeAttribute('aria-current'); });
+        (linksById[entry.target.id] || []).forEach(function (l) {
+          l.classList.add('is-active');
+          l.setAttribute('aria-current', 'true');
         });
       });
     },
