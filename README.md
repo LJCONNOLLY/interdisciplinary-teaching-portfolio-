@@ -41,11 +41,8 @@ links will resolve.
 ## Accessibility
 
 - Every text size on the page is at least 1.35rem (21.6px), which clears
-  16pt (21.3px). Sizes are all in `rem` against the page root, not fixed `px`.
-- `js/text-size.js` adds an on-page A−/Reset/A+ control that scales the
-  entire page (it changes the root font-size; everything else follows because
-  it's all `rem`-based) and remembers the choice in `localStorage` across
-  pages and visits.
+  16pt (21.3px). Sizes are all in `rem` against the page root, not fixed `px`,
+  so browser-level zoom/text-size settings still work as expected.
 - Skip-to-content link, visible focus states, semantic heading order, and
   `prefers-reduced-motion` support are all in place already.
 
