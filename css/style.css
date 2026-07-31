@@ -236,7 +236,7 @@ button:focus-visible {
   font-family: var(--font-script);
   font-weight: 400;
   line-height: 1;
-  font-size: clamp(4.8rem, 15vw, 7.2rem);
+  font-size: clamp(6rem, 19vw, 10rem);
   margin: 0 0 0.5rem;
   color: var(--ink);
   border-bottom: 4px solid var(--terracotta);
@@ -374,6 +374,9 @@ h3 {
   text-decoration: none;
   color: var(--forest);
   border-bottom: 1px solid var(--sage);
+}
+
+.specimen-header .pdf-link {
   white-space: nowrap;
 }
 
