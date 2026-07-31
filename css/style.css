@@ -258,7 +258,15 @@ button:focus-visible {
   max-width: var(--measure);
   margin: 0 auto;
   padding: 2.5rem 1.5rem 1rem;
-  text-align: left;
+  text-align: center;
+}
+
+.opening-block--title {
+  padding-bottom: 0;
+}
+
+.opening-block--intro {
+  padding-top: 0.5rem;
 }
 
 .opening-block h1 {
