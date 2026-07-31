@@ -531,6 +531,19 @@ h3 {
   margin-top: 1rem;
   padding: 2.5rem 1.5rem 3rem;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.site-footer__logo img {
+  width: 110px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.site-footer__contact {
+  display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
