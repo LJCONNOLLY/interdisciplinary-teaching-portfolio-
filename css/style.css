@@ -536,6 +536,110 @@ h3 {
   color: var(--forest);
 }
 
+/* ---- curriculum vitae -------------------------------------------------------- */
+
+.cv-body {
+  padding-top: 2rem;
+}
+
+.cv-section {
+  max-width: var(--measure);
+  margin: 0 0 2.75rem;
+}
+
+.cv-section:last-child {
+  margin-bottom: 0;
+}
+
+.cv-section > h3:first-child {
+  margin-top: 0;
+}
+
+.cv-subhead {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.35rem;
+  color: var(--frond);
+  margin: 1.75rem 0 0.75rem;
+}
+
+.cv-entry {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--sage);
+}
+
+.cv-entry:last-child {
+  border-bottom: none;
+}
+
+.cv-entry__org {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+
+.cv-entry__line {
+  font-size: var(--min-text);
+  color: var(--forest);
+  margin: 0 0 0.25rem;
+}
+
+.cv-entry__line:last-child {
+  margin-bottom: 0;
+}
+
+.cv-entry__date {
+  color: var(--frond);
+}
+
+.cv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cv-list li {
+  font-size: var(--min-text);
+  color: var(--forest);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--mist);
+}
+
+.cv-list li:last-child {
+  border-bottom: none;
+}
+
+.cv-body a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+  color: var(--forest);
+}
+
+.cv-body a:hover {
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
+}
+
+/* ---- research statement ------------------------------------------------------ */
+
+.research-text {
+  max-width: var(--measure);
+}
+
+.research-text p {
+  margin: 0 0 1.25em;
+}
+
+.research-text p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---- footer ------------------------------------------------------------------ */
 
 .site-footer {

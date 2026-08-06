@@ -9,17 +9,17 @@ Five separate HTML files, each a complete page (no server-side includes, so
 the nav/footer markup is duplicated in each file by necessity — edit all five
 if that shared chrome changes):
 
-- `index.html` — home: header plate, name/tagline, links to the other four pages
+- `index.html` — home: header plate, name/tagline
+- `cv.html` — full curriculum vitae, rendered from `Connolly CV.docx`
+- `research.html` — full research statement
 - `philosophy.html` — full teaching statement, with its own in-page sub-nav
-- `syllabus.html` — links out to the real, separately-published syllabus (Technofeminisms in Practice)
-- `assignment.html` — the real signature assignment (Technofeminisms in Practice final project), in full
-- `courses.html` — courses prepared to teach
+- `courses.html` — links out to the real, separately-published syllabus (Technofeminisms in Practice)
 
 ## Placeholders
 
-Neither `syllabus.html` nor `assignment.html` is a placeholder anymore —
-both link to or contain LJ's real content. If a future artifact needs the
-empty-record placeholder treatment again, the pattern that was here is:
+`courses.html` is not a placeholder — it links to LJ's real, separately-
+published syllabus. If a future artifact needs the empty-record placeholder
+treatment again, the pattern that was here is:
 each field is a `.specimen-field` with a `.field-label` and either real
 content or a blank `.field-empty field-empty--{sm,md,lg,xl}` div
 (`aria-hidden="true"`), with the card's `STATUS` meta value reading
